@@ -1,4 +1,16 @@
 <div class="border p-4 mb-3">
-  <strong>Title | <span class="text-muted">Start: 21-11-2020</span></strong>
-  <p class="text-muted">Lorem ipsum</p>
+  <strong>{{ data.title }} | <span class="text-muted">Start: {{ data.date }}</span></strong>
+  <p class="text-muted">{{ data.description }}</p>
+
+  <ng-template [ngIf]="data.hidden === false">
+    <span class="material-icons" (click)="setHidden(data.id);">
+    visibility
+    </span>
+  </ng-template>
+
+  <ng-template [ngIf]="data.hidden === true">
+    <span class="material-icons" (click)="setVisibility(data.id);">
+    visibility_off
+    </span>
+  </ng-template>
 </div>

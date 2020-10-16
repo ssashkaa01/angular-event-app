@@ -9,6 +9,7 @@ import { EventItemComponent } from './events/event-item/event-item.component';
 import { EventListComponent } from './events/event-list/event-list.component';
 import { EventFormAddComponent } from './events/event-form-add/event-form-add.component';
 import {FormsModule} from '@angular/forms';
+import {EventsDataService} from '../services/events-data.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import {FormsModule} from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [EventsDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

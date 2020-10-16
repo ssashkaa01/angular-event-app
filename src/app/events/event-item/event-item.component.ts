@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {EventModel} from '../../../models/event.model';
+import { EventsDataService} from '../../../services/events-data.service';
 
 @Component({
   selector: 'app-event-item',
@@ -7,10 +9,18 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class EventItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventsDataService: EventsDataService) { }
 
-  @Input() currentEvent: Event;
+  @Input() data: EventModel;
   @Input() index: number;
+
+  setHidden(id: number): void {
+    this.eventsDataService.setHidden(id);
+  }
+
+  setVisibility(id: number): void {
+    this.eventsDataService.setVisibility(id);
+  }
 
   ngOnInit(): void {
   }

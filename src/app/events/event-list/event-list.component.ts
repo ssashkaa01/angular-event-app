@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {EventModel} from '../../../models/event.model';
+import {EventsDataService} from '../../../services/events-data.service';
 
 @Component({
   selector: 'app-event-list',
@@ -7,15 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventsDataService: EventsDataService) { }
 
-  data: any[] = [
-    {title: 'title 1', description: 'lorem ipsum 1', date: '10-11-2020'},
-    {title: 'title 2', description: 'lorem ipsum 2', date: '11-11-2020'},
-    {title: 'title 3', description: 'lorem ipsum 3', date: '12-11-2020'},
-  ];
+  listVisibility: EventModel[];
+  listHidden: EventModel[];
+  list: EventModel[];
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.listVisibility = this.eventsDataService.getVisibilityAll();
+    this.listHidden = this.eventsDataService.getHiddenAll();
+    this.list = this.eventsDataService.getAll();
+
+    this.eventsDataService.refreshList.subscribe((newEvents: EventModel[]) => {
+      this.list = newEvents;
+    });
+
+    this.eventsDataService.refreshVisibilityList.subscribe((newEvents: EventModel[]) => {
+      this.listVisibility = newEvents;
+    });
+
+    this.eventsDataService.refreshHiddenList.subscribe((newEvents: EventModel[]) => {
+      this.listHidden = newEvents;
+    });
   }
-
 }

@@ -1,3 +1,20 @@
-<div class="row">
-  <app-event-item *ngFor="let item of data; let i = index" class="col-md-12"></app-event-item>
-</div>
+<ng-template [ngIf]="listVisibility.length > 0">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Показується [{{ listVisibility.length }}]</h4>
+    </div>
+    <div class="col-md-12">
+      <app-event-item *ngFor="let item of listVisibility; let i = index" [data]="item" [index]="i" class="col-md-12"></app-event-item>
+    </div>
+  </div>
+</ng-template>
+<ng-template [ngIf]="listHidden.length > 0">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Приховано [{{ listHidden.length }}]</h4>
+    </div>
+    <div class="col-md-12">
+      <app-event-item *ngFor="let item of listHidden; let i = index" [data]="item" [index]="i" class="col-md-12"></app-event-item>
+    </div>
+  </div>
+</ng-template>
