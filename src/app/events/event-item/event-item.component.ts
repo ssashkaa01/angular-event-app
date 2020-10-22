@@ -22,6 +22,10 @@ export class EventItemComponent implements OnInit {
     this.eventsDataService.setVisibility(id);
   }
 
+  editItem(id: number): void {
+    this.eventsDataService.setEditItem(id);
+  }
+
   ngOnInit(): void {
   }
 

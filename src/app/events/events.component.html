@@ -1,6 +1,7 @@
 <div class="container mt-5">
   <div class="row">
-      <app-event-form-add class="col-md-4 mb-5"></app-event-form-add>
+      <app-event-form-add class="col-md-4 mb-5" *ngIf="!editable"></app-event-form-add>
+      <app-event-form-edit class="col-md-4 mb-5" *ngIf="editable"></app-event-form-edit>
       <app-event-list class="col-md-8 mb-5"></app-event-list>
   </div>
 </div>

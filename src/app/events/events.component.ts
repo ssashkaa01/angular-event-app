@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {EventsDataService} from '../../services/events-data.service';
 
 @Component({
   selector: 'app-events',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventsDataService: EventsDataService) { }
+
+  editable = false;
 
   ngOnInit(): void {
-  }
 
+    this.eventsDataService.refreshEditable.subscribe((editable: boolean) => {
+      this.editable = editable;
+    });
+  }
 }
