@@ -11,6 +11,8 @@ import { EventFormAddComponent } from './events/event-form-add/event-form-add.co
 import {FormsModule} from '@angular/forms';
 import {EventsDataService} from '../services/events-data.service';
 import { EventFormEditComponent } from './events/event-form-edit/event-form-edit.component';
+import { EventPageInfoComponent } from './events/event-page-info/event-page-info.component';
+import { EventListPageComponent } from './events/event-list-page/event-list-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { EventFormEditComponent } from './events/event-form-edit/event-form-edit
     EventItemComponent,
     EventListComponent,
     EventFormAddComponent,
-    EventFormEditComponent
+    EventFormEditComponent,
+    EventPageInfoComponent,
+    EventListPageComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ export class EventsDataService {
   constructor() { }
 
   refreshList = new EventEmitter<EventModel[]>();
+  refreshInfoViewItem = new EventEmitter<EventModel>();
   refreshHiddenList = new EventEmitter<EventModel[]>();
   refreshVisibilityList = new EventEmitter<EventModel[]>();
   refreshEditForm = new EventEmitter<EventModel>();
@@ -97,5 +98,13 @@ export class EventsDataService {
 
   getEditItem(): EventModel {
     return this.data.find(item => item.id === this.editId);
+  }
+
+  getItemById(id: number): EventModel {
+    return this.data.find(item => item.id == id);
+  }
+
+  loadInfoViewItem(id: number): void {
+    this.refreshInfoViewItem.emit(this.getItemById(id));
   }
 }
